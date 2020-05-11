@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'Photo.jpg' %}" height=1000 width=750 class="img-fluid"><br>
+
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h2 id="hometext" class="font-weight-bold">AB is Commander-in-Chief at hashiT and lives in IVV 😊</h2>
+  </div>
+</div>
+
+<h2 class="mt-5">Projects</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if project.url %}
+    <a href="{{ project.url }}"  target="_blank">
+      <img src="{{ project.image.url }}" class="img-fluidp mb-2" width=200 height=100 target="_blank">
+    </a>
+    {% else %}
+    <img src="{{ project.image.url }}" class="img-fluidp mb-2" width=200 height=100>
+    {% endif %}
+
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
